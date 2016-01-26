@@ -1,4 +1,5 @@
 from django.conf.urls import include, url
+from django.conf.urls.i18n import i18n_patterns
 from django.conf import settings
 from django.contrib import admin
 
@@ -17,8 +18,17 @@ urlpatterns = [
 
     url(r'^search/$', search_views.search, name='search'),
 
+    url(r'^ckeditor/', include('ckeditor_uploader.urls')),
+
     url(r'', include(wagtail_urls)),
 ]
+
+
+urlpatterns += i18n_patterns('',
+    # These URLs will have /<language_code>/ appended to the beginning
+    url(r'^search/$', 'search.views.search', name='search'),
+    url(r'', include(wagtail_urls)),
+)
 
 
 if settings.DEBUG:

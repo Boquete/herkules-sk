@@ -38,10 +38,12 @@ INSTALLED_APPS = [
     'wagtail.wagtailsearch',
     'wagtail.wagtailadmin',
     'wagtail.wagtailcore',
+    'wagtail_modeltranslation',
 
     'modelcluster',
     'compressor',
     'taggit',
+    'ckeditor',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -60,6 +62,7 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 
     'wagtail.wagtailcore.middleware.SiteMiddleware',
     'wagtail.wagtailredirects.middleware.RedirectMiddleware',
@@ -133,6 +136,17 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 
+# CKEditor
+CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+
+
 # Wagtail settings
 
 WAGTAIL_SITE_NAME = "herkules"
+
+LANGUAGES = (
+    ('en', u'English'),
+    ('pl', u'Polski'),
+    ('sk', u'Slovensky')
+)
